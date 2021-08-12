@@ -93,4 +93,11 @@ class DashboardController extends Controller
 
         return redirect('/dashboard');
     }
+    public function destroy($id)
+    {
+        $data = Book::findOrFail($id);
+        $data->delete();
+
+        return redirect('/dashboard')->with('success', 'Data has been deleted successfully');
+    }
 }

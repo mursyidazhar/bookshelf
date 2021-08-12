@@ -70,7 +70,7 @@
                                                 <a href="{{ route('dashboard-edit', $book->id) }}">
                                                     <button class="btn btn-primary">Edit</button>
                                                 </a>
-                                                <form action="#" method="POST" onsubmit="return confirm('Hapu data?')">
+                                                <form action="{{route('dashboard-delete', $book->id)}}" method="POST" onsubmit="return confirm('Hapu data?')">
                                                     @method('delete')
                                                     @csrf
                                                     <button class="btn btn-danger ms-2">Delete</button>

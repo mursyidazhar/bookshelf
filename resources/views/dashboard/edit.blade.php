@@ -11,8 +11,9 @@
                             <h2 class="text-center pt-2">Edit Collection</h2>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('dashboard-store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('dashboard-update', $item->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -29,13 +30,13 @@
                                 <div class="col-md-12 mt-2">
                                     <div class="form-group">
                                         <label>Date Published</label>
-                                        <input value="thn_terbit" type="text" name="thn_terbit" class="form-control" required autocomplete="off">    
+                                        <input value="{{$item->thn_terbit}}" type="text" name="thn_terbit" class="form-control" required autocomplete="off">    
                                     </div>    
                                 </div>    
                                 <div class="col-md-12 mt-2">
                                     <div class="form-group">
                                         <label>Photo</label>
-                                        <input type="file" name="photo" class="form-control" required> 
+                                        <input type="file" value="{{ asset('images/' . $item->photo) }}" name="photo" class="form-control" required> 
                                         <img src="{{ asset('images/' . $item->photo) }}" style="max-width:100px" alt="">    
                                     </div>    
                                 </div>    

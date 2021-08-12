@@ -4,7 +4,12 @@
     <style>
         .right-hero {
             padding-left: 70px;
+            padding-right: 60px;
             padding-top: 60px;
+        }
+        .hero {
+            padding-left: 70px;
+            padding-right: 70px
         }
         .hero img {
             height: 460px;
