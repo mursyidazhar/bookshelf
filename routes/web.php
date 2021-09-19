@@ -40,6 +40,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/create-collection', [DashboardController::class, 'create'])->name('dashboard-create');
     Route::post('/create-collection', [DashboardController::class, 'store'])->name('dashboard-store');
     Route::get('/edit-collection/{id}', [DashboardController::class, 'edit'])->name('dashboard-edit');
+    Route::put('/edit-collection/{id}', [DashboardController::class, 'update'])->name('dashboard-update');
+    Route::delete('/delete-collection/{id}', [DashboardController::class, 'destroy'])->name('dashboard-delete');
     Route::get('/collection', [DashboardController::class, 'show'])->name('collection');
-    Route::post('/logout', [LogoutController::class])->name('logout');
+    Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+    Route::get('/export-excel', [DashboardController::class, 'exportToExcel'])->name('export');
 });

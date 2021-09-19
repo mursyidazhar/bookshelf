@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Exports\BooksExport;
+use Excel;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $books = Book::latest();
+       
+        $books = Book::where('user_id', auth()->user()->id);
         $categories = Category::all();
 
         if(request('search')) {
@@ -54,8 +57,9 @@ class DashboardController extends Controller
         $namaFoto = time() . '-' . $request->judul . '.' . $request->photo->extension();
         // SIMPAN FOTO DI FOLDER PUBLIC LALU IMAGES
         $request->photo->move(public_path('images'), $namaFoto);
-
+        // dd(auth()->user()->id);
         $books = Book::create([
+            'user_id' => auth()->user()->id,
             'judul' => $request->input('judul'),
             'penulis' => $request->input('penulis'),
             'thn_terbit' => $request->input('thn_terbit'),
@@ -70,7 +74,7 @@ class DashboardController extends Controller
     }
     public function show()
     {
-        $books = Book::paginate(20);
+        $books = Book::where('user_id', auth()->user()->id)->paginate(20);
         return view('dashboard.show', compact('books'));
     }
     public function edit($id)
@@ -92,5 +96,16 @@ class DashboardController extends Controller
         $item->update($data);
 
         return redirect('/dashboard');
+    }
+    public function destroy($id)
+    {
+        $data = Book::findOrFail($id);
+        $data->delete();
+
+        return redirect('/dashboard')->with('success', 'Data has been deleted successfully');
+    }
+    public function exportToExcel()
+    {
+        return Excel::download(new BooksExport, 'bookslist.xlsx');
     }
 }

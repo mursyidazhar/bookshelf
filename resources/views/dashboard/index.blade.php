@@ -46,6 +46,9 @@
                                 <a href="{{ route('dashboard-create') }}" class="btn btn-primary mb-3">
                                     + Add
                                 </a>
+                                <a href="{{ route('export') }}" class="btn btn-success mb-3">
+                                    Export
+                                </a>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
@@ -70,7 +73,7 @@
                                                 <a href="{{ route('dashboard-edit', $book->id) }}">
                                                     <button class="btn btn-primary">Edit</button>
                                                 </a>
-                                                <form action="#" method="POST" onsubmit="return confirm('Hapu data?')">
+                                                <form action="{{route('dashboard-delete', $book->id)}}" method="POST" onsubmit="return confirm('Hapu data?')">
                                                     @method('delete')
                                                     @csrf
                                                     <button class="btn btn-danger ms-2">Delete</button>

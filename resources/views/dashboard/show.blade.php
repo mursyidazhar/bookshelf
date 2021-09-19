@@ -10,6 +10,9 @@
     .card-display:hover {
     transform: translateY(-16px);
     }
+    .card img {
+        height: 200px;
+    }
 </style>
 
 @endpush

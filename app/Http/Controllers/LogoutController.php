@@ -13,7 +13,7 @@ class LogoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function logout(Request $request)
     {
         Auth::logout();
 
