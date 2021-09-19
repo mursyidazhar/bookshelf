@@ -44,4 +44,5 @@ Route::middleware('auth')->group(function() {
     Route::delete('/delete-collection/{id}', [DashboardController::class, 'destroy'])->name('dashboard-delete');
     Route::get('/collection', [DashboardController::class, 'show'])->name('collection');
     Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+    Route::get('/export-excel', [DashboardController::class, 'exportToExcel'])->name('export');
 });

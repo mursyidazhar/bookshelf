@@ -46,6 +46,9 @@
                                 <a href="{{ route('dashboard-create') }}" class="btn btn-primary mb-3">
                                     + Add
                                 </a>
+                                <a href="{{ route('export') }}" class="btn btn-success mb-3">
+                                    Export
+                                </a>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
