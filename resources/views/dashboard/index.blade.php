@@ -47,7 +47,7 @@
                                     + Add
                                 </a>
                                 <a href="{{ route('export') }}" class="btn btn-success mb-3">
-                                    Export
+                                    Export <i class="ti-file"></i>
                                 </a>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
@@ -71,12 +71,12 @@
                                             <td>{{$book->nilai}}</td>
                                             <td class="d-flex">
                                                 <a href="{{ route('dashboard-edit', $book->id) }}">
-                                                    <button class="btn btn-primary">Edit</button>
+                                                    <button class="btn btn-primary"><i class="ti-pencil-alt"></i></button>
                                                 </a>
                                                 <form action="{{route('dashboard-delete', $book->id)}}" method="POST" onsubmit="return confirm('Hapu data?')">
                                                     @method('delete')
                                                     @csrf
-                                                    <button class="btn btn-danger ms-2">Delete</button>
+                                                    <button class="btn btn-danger ms-2"><i class="ti-trash"></i></button>
                                                 </form>
                                             </td>
                                             </tr>
